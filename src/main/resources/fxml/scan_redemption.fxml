@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<HBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.vms.controller.ScanRedemptionController" minHeight="620">
+    <fx:include source="sidebar.fxml" fx:id="sidebar"/>
+    <VBox styleClass="main-content" HBox.hgrow="ALWAYS" spacing="14">
+        <Label styleClass="page-title" text="Rédemption des bons"/>
+        <Label styleClass="page-subtitle" text="Saisir ou scanner le code du bon cadeau"/>
+
+        <!-- Zone de scan -->
+        <VBox styleClass="card" spacing="14">
+            <Label styleClass="card-title" text="🔍  Scanner / Saisir un bon"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="txtCodeBon" HBox.hgrow="ALWAYS" styleClass="field-input"
+                           promptText="Code bon — ex: VCH000001ABCDEF"
+                           style="-fx-font-family:monospace;-fx-font-size:14px;-fx-padding:12 16;"/>
+                <Button fx:id="btnValider" text="✔ Valider" styleClass="btn-success"
+                        style="-fx-padding:12 20;-fx-font-size:14px;" onAction="#onValider"/>
+                <Button text="✕ Effacer" styleClass="btn-outline"
+                        style="-fx-padding:12 14;" onAction="#onEffacer"/>
+            </HBox>
+        </VBox>
+
+        <!-- Résultat -->
+        <VBox fx:id="panneauResultat" spacing="0" visible="false" managed="false">
+
+            <!-- OK -->
+            <VBox fx:id="panneauOk" styleClass="card" spacing="10"
+                  style="-fx-background-color:#d1fae5;-fx-border-color:#a7f3d0;">
+                <Label text="✅  BON VALIDE — RÉDEMPTION ACCEPTÉE"
+                       style="-fx-font-size:16px;-fx-font-weight:700;-fx-text-fill:#065f46;"/>
+                <HBox spacing="40">
+                    <VBox spacing="4">
+                        <Label text="Code" style="-fx-font-size:11px;-fx-text-fill:#065f46;"/>
+                        <Label fx:id="lblCodeOk" style="-fx-font-family:monospace;-fx-font-size:14px;-fx-font-weight:700;-fx-text-fill:#065f46;"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Client" style="-fx-font-size:11px;-fx-text-fill:#065f46;"/>
+                        <Label fx:id="lblClientOk" style="-fx-font-size:13px;-fx-font-weight:600;-fx-text-fill:#065f46;"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Valeur" style="-fx-font-size:11px;-fx-text-fill:#065f46;"/>
+                        <Label fx:id="lblValeurOk" style="-fx-font-size:18px;-fx-font-weight:700;-fx-text-fill:#065f46;"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Expire le" style="-fx-font-size:11px;-fx-text-fill:#065f46;"/>
+                        <Label fx:id="lblExpirationOk" style="-fx-font-size:13px;-fx-text-fill:#065f46;"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Demande" style="-fx-font-size:11px;-fx-text-fill:#065f46;"/>
+                        <Label fx:id="lblDemandOk" style="-fx-font-family:monospace;-fx-font-size:12px;-fx-text-fill:#065f46;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- Erreur -->
+            <VBox fx:id="panneauErreur" styleClass="card" spacing="8"
+                  style="-fx-background-color:#fee2e2;-fx-border-color:#fecaca;" visible="false" managed="false">
+                <Label fx:id="lblMessageErreur" text=""
+                       style="-fx-font-size:15px;-fx-font-weight:700;-fx-text-fill:#991b1b;" wrapText="true"/>
+            </VBox>
+        </VBox>
+
+        <!-- Historique du jour -->
+        <VBox styleClass="card" VBox.vgrow="ALWAYS" spacing="8">
+            <Label styleClass="card-title" text="Historique — rédemptions aujourd'hui"/>
+            <ListView fx:id="listeHistorique" VBox.vgrow="ALWAYS"
+                      style="-fx-font-size:12px;-fx-font-family:monospace;">
+                <placeholder>
+                    <Label text="Aucune rédemption aujourd'hui"
+                           style="-fx-text-fill:#8a96a8;-fx-font-size:12px;"/>
+                </placeholder>
+            </ListView>
+        </VBox>
+    </VBox>
+</HBox>

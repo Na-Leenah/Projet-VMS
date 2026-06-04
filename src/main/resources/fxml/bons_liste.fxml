@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<HBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.vms.controller.BonsListeController" minHeight="620">
+    <fx:include source="sidebar.fxml" fx:id="sidebar"/>
+    <VBox styleClass="main-content" HBox.hgrow="ALWAYS" spacing="12">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <VBox HBox.hgrow="ALWAYS" spacing="2">
+                <Label styleClass="page-title" text="Bons émis"/>
+                <Label fx:id="lblTotal" styleClass="page-subtitle" text="Chargement..."/>
+            </VBox>
+            <TextField fx:id="txtRecherche" styleClass="field-input"
+                       promptText="🔍  Rechercher code, référence, client..." prefWidth="280"/>
+        </HBox>
+        <HBox spacing="8" alignment="CENTER_LEFT">
+            <Button fx:id="btnTous"    text="Tous"    onAction="#onFiltreTous"
+                    style="-fx-background-color:#1e40af;-fx-text-fill:white;-fx-background-radius:16;-fx-padding:4 14;-fx-font-size:11px;-fx-cursor:hand;"/>
+            <Button fx:id="btnGeneres" text="Générés" onAction="#onFiltreGeneres"
+                    style="-fx-background-color:#f1f5f9;-fx-text-fill:#64748b;-fx-background-radius:16;-fx-padding:4 14;-fx-font-size:11px;-fx-cursor:hand;"/>
+            <Button fx:id="btnRedimes" text="Rédimés" onAction="#onFiltreRedimes"
+                    style="-fx-background-color:#f1f5f9;-fx-text-fill:#64748b;-fx-background-radius:16;-fx-padding:4 14;-fx-font-size:11px;-fx-cursor:hand;"/>
+            <Button fx:id="btnExpires" text="Expirés" onAction="#onFiltreExpires"
+                    style="-fx-background-color:#f1f5f9;-fx-text-fill:#64748b;-fx-background-radius:16;-fx-padding:4 14;-fx-font-size:11px;-fx-cursor:hand;"/>
+        </HBox>
+        <VBox styleClass="card" VBox.vgrow="ALWAYS">
+            <TableView fx:id="tableView" VBox.vgrow="ALWAYS" styleClass="table-view">
+                <columns>
+                    <TableColumn fx:id="colCode"       text="Code bon"     prefWidth="200"/>
+                    <TableColumn fx:id="colDemande"    text="Demande"      prefWidth="120"/>
+                    <TableColumn fx:id="colClient"     text="Client"       prefWidth="160"/>
+                    <TableColumn fx:id="colValeur"     text="Valeur"       prefWidth="100"/>
+                    <TableColumn fx:id="colExpiration" text="Expiration"   prefWidth="100"/>
+                    <TableColumn fx:id="colStatut"     text="Statut"       prefWidth="120"/>
+                </columns>
+                <placeholder>
+                    <Label text="Aucun bon trouvé" style="-fx-text-fill:#8a96a8;-fx-font-size:13px;"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </VBox>
+</HBox>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<HBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.vms.controller.DemandesListeController"
+      minHeight="620">
+
+    <!-- ══════ SIDEBAR RÉUTILISABLE ══════ -->
+    <fx:include source="sidebar.fxml" fx:id="sidebar"/>
+
+    <!-- ══════ CONTENU ══════ -->
+    <VBox styleClass="main-content" HBox.hgrow="ALWAYS" spacing="12">
+
+        <!-- Topbar -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <VBox HBox.hgrow="ALWAYS" spacing="2">
+                <Label styleClass="page-title" text="Toutes les demandes"/>
+                <Label fx:id="lblTotalDemandes" styleClass="page-subtitle" text="Chargement..."/>
+            </VBox>
+            <TextField fx:id="txtRecherche"
+                       styleClass="field-input"
+                       promptText="🔍  Rechercher référence, client..."
+                       prefWidth="260"/>
+            <HBox fx:id="btnNouvelleDemandeZone" spacing="8" alignment="CENTER_RIGHT">
+                <Button styleClass="btn-outline" text="📊 Export"/>
+                <Button styleClass="btn-primary" text="+ Nouvelle demande"
+                        onAction="#onNouvelleDemandeAction"/>
+            </HBox>
+        </HBox>
+
+        <!-- Filtres -->
+        <HBox spacing="8" alignment="CENTER_LEFT">
+            <Button fx:id="btnTous"
+                    text="Tous"
+                    style="-fx-background-color:#1e40af;-fx-text-fill:white;
+                           -fx-background-radius:16;-fx-padding:4 14;-fx-font-size:11px;-fx-cursor:hand;"
+                    onAction="#onFiltreToutes"/>
+            <Button fx:id="btnAttentePaiement"
+                    text="Att. paiement"
+                    style="-fx-background-color:#f1f5f9;-fx-text-fill:#64748b;
+                           -fx-background-radius:16;-fx-padding:4 14;-fx-font-size:11px;-fx-cursor:hand;"
+                    onAction="#onFiltreAttentePaiement"/>
+            <Button fx:id="btnAttenteAppro"
+                    text="Att. approbation"
+                    style="-fx-background-color:#f1f5f9;-fx-text-fill:#64748b;
+                           -fx-background-radius:16;-fx-padding:4 14;-fx-font-size:11px;-fx-cursor:hand;"
+                    onAction="#onFiltreAttenteAppro"/>
+            <Button fx:id="btnEmis"
+                    text="Émis"
+                    style="-fx-background-color:#f1f5f9;-fx-text-fill:#64748b;
+                           -fx-background-radius:16;-fx-padding:4 14;-fx-font-size:11px;-fx-cursor:hand;"
+                    onAction="#onFiltreEmis"/>
+            <Button fx:id="btnAnnules"
+                    text="Annulés"
+                    style="-fx-background-color:#f1f5f9;-fx-text-fill:#64748b;
+                           -fx-background-radius:16;-fx-padding:4 14;-fx-font-size:11px;-fx-cursor:hand;"
+                    onAction="#onFiltreAnnules"/>
+        </HBox>
+
+        <!-- Tableau -->
+        <VBox styleClass="card" VBox.vgrow="ALWAYS">
+            <TableView fx:id="tableView" VBox.vgrow="ALWAYS" styleClass="table-view">
+                <columns>
+                    <TableColumn fx:id="colReference"  text="Référence"  prefWidth="120"/>
+                    <TableColumn fx:id="colClient"     text="Client"     prefWidth="155"/>
+                    <TableColumn fx:id="colNbBons"     text="Nb bons"    prefWidth="75"/>
+                    <TableColumn fx:id="colMontant"    text="Montant"    prefWidth="110"/>
+                    <TableColumn fx:id="colDate"       text="Date"       prefWidth="85"/>
+                    <TableColumn fx:id="colStatut"     text="Statut"     prefWidth="140"/>
+                    <TableColumn fx:id="colActions"    text="Actions"    prefWidth="140"/>
+                </columns>
+                <placeholder>
+                    <Label text="Aucune demande trouvée"
+                           style="-fx-text-fill:#8a96a8;-fx-font-size:13px;"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+
+    </VBox>
+
+</HBox>

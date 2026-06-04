@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<HBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.vms.controller.AuditTrailController" minHeight="620">
+    <fx:include source="sidebar.fxml" fx:id="sidebar"/>
+    <VBox styleClass="main-content" HBox.hgrow="ALWAYS" spacing="12">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <VBox HBox.hgrow="ALWAYS" spacing="2">
+                <Label styleClass="page-title"    text="Audit Trail"/>
+                <Label fx:id="lblTotal" styleClass="page-subtitle" text="Chargement..."/>
+            </VBox>
+            <ComboBox fx:id="cbTypeFiltre" prefWidth="200"
+                      style="-fx-font-size:12px;-fx-padding:6 10;"/>
+            <TextField fx:id="txtRecherche" styleClass="field-input"
+                       promptText="Rechercher dans les actions..." prefWidth="240"/>
+        </HBox>
+        <VBox styleClass="card" VBox.vgrow="ALWAYS">
+            <TableView fx:id="tableView" VBox.vgrow="ALWAYS" styleClass="table-view">
+                <columns>
+                    <TableColumn fx:id="colDate"         text="Date / Heure"   prefWidth="130"/>
+                    <TableColumn fx:id="colType"         text="Type"           prefWidth="110"/>
+                    <TableColumn fx:id="colDescription"  text="Description"    prefWidth="400"/>
+                    <TableColumn fx:id="colUtilisateur"  text="Utilisateur"    prefWidth="150"/>
+                </columns>
+                <placeholder>
+                    <Label text="Aucune entree dans l'audit trail"
+                           style="-fx-text-fill:#8a96a8;-fx-font-size:13px;"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </VBox>
+</HBox>

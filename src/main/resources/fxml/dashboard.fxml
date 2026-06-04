@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<HBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.vms.controller.DashboardController"
+      minHeight="620">
+
+    <!-- ══════ SIDEBAR ══════ -->
+    <VBox styleClass="sidebar">
+
+        <HBox styleClass="sidebar-brand" alignment="CENTER_LEFT" spacing="10">
+            <Label text="V" style="-fx-background-color:#1e3a72;-fx-background-radius:8;
+                                   -fx-text-fill:#6ab0f5;-fx-font-weight:700;-fx-font-size:16px;
+                                   -fx-min-width:34;-fx-min-height:34;-fx-alignment:CENTER;"/>
+            <VBox spacing="1">
+                <Label styleClass="sidebar-title"    text="VMS"/>
+                <Label styleClass="sidebar-subtitle" text="VOUCHER MANAGER"/>
+            </VBox>
+        </HBox>
+
+        <Label styleClass="sidebar-section" text="PRINCIPAL"/>
+
+        <Button styleClass="nav-item, nav-item-active" maxWidth="Infinity"
+                text="🏠  Tableau de bord" alignment="CENTER_LEFT"/>
+
+        <Button styleClass="nav-item" maxWidth="Infinity"
+                text="📋  Demandes" alignment="CENTER_LEFT"
+                onAction="#onVoirDemandes">
+            <graphic>
+                <Label fx:id="badgeDemandes" text="0"
+                       style="-fx-background-color:#1e3a72;-fx-text-fill:#6ab0f5;
+                              -fx-background-radius:8;-fx-padding:1 6;-fx-font-size:9px;"
+                       visible="false" managed="false"/>
+            </graphic>
+        </Button>
+
+        <!-- Bons émis — approbateur + admin -->
+        <VBox fx:id="menuBons">
+            <Button styleClass="nav-item" maxWidth="Infinity"
+                    text="🎁  Bons émis" alignment="CENTER_LEFT"
+                    onAction="#onVoirBons"/>
+        </VBox>
+
+        <Label styleClass="sidebar-section" text="GESTION"/>
+
+        <!-- Clients — admin + comptable (lecture) -->
+        <VBox fx:id="menuClients">
+            <Button styleClass="nav-item" maxWidth="Infinity"
+                    text="👤  Clients" alignment="CENTER_LEFT"
+                    onAction="#onVoirClients"/>
+        </VBox>
+
+        <!-- Magasins — admin uniquement -->
+        <VBox fx:id="menuMagasins">
+            <Button styleClass="nav-item" maxWidth="Infinity"
+                    text="🏪  Enseignes / Magasins" alignment="CENTER_LEFT"/>
+        </VBox>
+
+        <!-- Utilisateurs — admin uniquement -->
+        <VBox fx:id="menuUtilisateurs">
+            <Button styleClass="nav-item" maxWidth="Infinity"
+                    text="👥  Utilisateurs" alignment="CENTER_LEFT"/>
+        </VBox>
+
+        <!-- Paiements — admin + comptable -->
+        <VBox fx:id="menuPaiements">
+            <Button styleClass="nav-item" maxWidth="Infinity"
+                    text="💰  Paiements" alignment="CENTER_LEFT"
+                    onAction="#onVoirPaiements"/>
+        </VBox>
+
+        <!-- Approbations — admin + comptable (lecture) + approbateur -->
+        <VBox fx:id="menuApprobations">
+            <Button styleClass="nav-item" maxWidth="Infinity"
+                    text="✅  Approbations" alignment="CENTER_LEFT"
+                    onAction="#onVoirApprobations"/>
+        </VBox>
+
+        <Label styleClass="sidebar-section" text="SYSTÈME"/>
+
+        <!-- Rapports — admin + comptable -->
+        <VBox fx:id="menuRapports">
+            <Button styleClass="nav-item" maxWidth="Infinity"
+                    text="📊  Rapports Excel" alignment="CENTER_LEFT"/>
+        </VBox>
+
+        <!-- Audit — admin uniquement -->
+        <VBox fx:id="menuAudit">
+            <Button styleClass="nav-item" maxWidth="Infinity"
+                    text="📄  Audit Trail" alignment="CENTER_LEFT"/>
+        </VBox>
+
+        <!-- Paramètres — admin uniquement -->
+        <VBox fx:id="menuParametres">
+            <Button styleClass="nav-item" maxWidth="Infinity"
+                    text="⚙️  Paramètres" alignment="CENTER_LEFT"/>
+        </VBox>
+
+        <VBox VBox.vgrow="ALWAYS"/>
+
+        <!-- Utilisateur connecté -->
+        <VBox styleClass="sidebar-user-zone" spacing="8">
+            <HBox alignment="CENTER_LEFT" spacing="9">
+                <Label fx:id="lblUserInitiales" text="??"
+                       style="-fx-background-color:#1e3a72;-fx-text-fill:#6ab0f5;
+                              -fx-background-radius:50%;-fx-font-size:11px;-fx-font-weight:600;
+                              -fx-min-width:30;-fx-min-height:30;-fx-alignment:CENTER;"/>
+                <VBox spacing="1">
+                    <Label fx:id="lblUserNom"  text="..." styleClass="ava-name"/>
+                    <Label fx:id="lblUserRole" text="..." styleClass="ava-role"/>
+                </VBox>
+            </HBox>
+            <Button text="⎋  Déconnexion" maxWidth="Infinity" styleClass="nav-item"
+                    style="-fx-text-fill:#ef4444;-fx-font-size:11px;"
+                    onAction="#onDeconnexion"/>
+        </VBox>
+
+    </VBox>
+
+    <!-- ══════ CONTENU PRINCIPAL ══════ -->
+    <VBox styleClass="main-content" HBox.hgrow="ALWAYS" spacing="14">
+
+        <!-- Bandeau rôle -->
+        <Label fx:id="lblRoleBanner" text="" maxWidth="Infinity" wrapText="true"/>
+
+        <!-- Topbar -->
+        <HBox alignment="CENTER_LEFT">
+            <VBox HBox.hgrow="ALWAYS" spacing="2">
+                <Label styleClass="page-title"    text="Tableau de bord"/>
+                <Label fx:id="lblPageSubtitle" styleClass="page-subtitle" text=""/>
+            </VBox>
+            <!-- Bouton Nouvelle demande — visible ADMIN + COMPTABLE seulement -->
+            <VBox fx:id="btnNouvelleDemandeZone" alignment="CENTER_RIGHT">
+                <HBox spacing="8">
+                    <Button styleClass="btn-outline" text="📊 Export Excel"/>
+                    <Button styleClass="btn-primary" text="+ Nouvelle demande"
+                            onAction="#onNouvelleDemandeAction"/>
+                </HBox>
+            </VBox>
+        </HBox>
+
+        <!-- 4 Statistiques -->
+        <HBox spacing="10">
+            <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="4">
+                <Label fx:id="statLbl1" text="—" style="-fx-font-size:11px;-fx-text-fill:#64748b;"/>
+                <Label fx:id="statVal1" text="…" style="-fx-font-size:22px;-fx-font-weight:700;-fx-text-fill:#1a2a4a;"/>
+                <Label fx:id="statMeta1" text="" style="-fx-font-size:10px;-fx-text-fill:#8a96a8;"/>
+            </VBox>
+            <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="4">
+                <Label fx:id="statLbl2" text="—" style="-fx-font-size:11px;-fx-text-fill:#64748b;"/>
+                <Label fx:id="statVal2" text="…" style="-fx-font-size:22px;-fx-font-weight:700;-fx-text-fill:#f59e0b;"/>
+                <Label fx:id="statMeta2" text="" style="-fx-font-size:10px;-fx-text-fill:#8a96a8;"/>
+            </VBox>
+            <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="4">
+                <Label fx:id="statLbl3" text="—" style="-fx-font-size:11px;-fx-text-fill:#64748b;"/>
+                <Label fx:id="statVal3" text="…" style="-fx-font-size:22px;-fx-font-weight:700;-fx-text-fill:#10b981;"/>
+                <Label fx:id="statMeta3" text="" style="-fx-font-size:10px;-fx-text-fill:#8a96a8;"/>
+            </VBox>
+            <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="4">
+                <Label fx:id="statLbl4" text="—" style="-fx-font-size:11px;-fx-text-fill:#64748b;"/>
+                <Label fx:id="statVal4" text="…" style="-fx-font-size:22px;-fx-font-weight:700;-fx-text-fill:#ef4444;"/>
+                <Label fx:id="statMeta4" text="" style="-fx-font-size:10px;-fx-text-fill:#8a96a8;"/>
+            </VBox>
+        </HBox>
+
+        <!-- Demandes récentes + Activité -->
+        <HBox spacing="10" VBox.vgrow="ALWAYS">
+
+            <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="8">
+                <HBox alignment="CENTER_LEFT">
+                    <Label styleClass="card-title" text="Demandes récentes" HBox.hgrow="ALWAYS"/>
+                    <Button styleClass="btn-outline" text="Voir tout"
+                            style="-fx-font-size:11px;-fx-padding:4 10;"
+                            onAction="#onVoirDemandes"/>
+                </HBox>
+                <TableView fx:id="tableDemandes" VBox.vgrow="ALWAYS"
+                           styleClass="table-view" maxHeight="220">
+                    <columns>
+                        <TableColumn text="Référence"  prefWidth="110"/>
+                        <TableColumn text="Client"     prefWidth="140"/>
+                        <TableColumn text="Nb bons"    prefWidth="70"/>
+                        <TableColumn text="Montant"    prefWidth="100"/>
+                        <TableColumn text="Statut"     prefWidth="130"/>
+                    </columns>
+                    <placeholder>
+                        <Label text="Aucune demande"
+                               style="-fx-text-fill:#8a96a8;-fx-font-size:12px;"/>
+                    </placeholder>
+                </TableView>
+            </VBox>
+
+            <VBox styleClass="card" minWidth="260" maxWidth="290" spacing="8">
+                <Label styleClass="card-title" text="Activité récente"/>
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                            style="-fx-background:transparent;-fx-background-color:transparent;
+                                   -fx-border-color:transparent;">
+                    <VBox fx:id="activiteContainer" spacing="10">
+                        <Label text="Chargement..."
+                               style="-fx-text-fill:#8a96a8;-fx-font-size:11px;"/>
+                    </VBox>
+                </ScrollPane>
+            </VBox>
+
+        </HBox>
+
+    </VBox>
+
+</HBox>

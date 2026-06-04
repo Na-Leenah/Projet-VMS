@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<HBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.vms.controller.RapportsController" minHeight="620">
+    <fx:include source="sidebar.fxml" fx:id="sidebar"/>
+    <VBox styleClass="main-content" HBox.hgrow="ALWAYS" spacing="14">
+
+        <VBox spacing="2">
+            <Label styleClass="page-title"    text="Rapports Excel"/>
+            <Label styleClass="page-subtitle" text="Exportez les donnees vers Excel"/>
+        </VBox>
+
+        <Label text="Chaque rapport genere un fichier .xlsx que vous pouvez ouvrir dans Excel."
+               maxWidth="Infinity"
+               style="-fx-background-color:#dbeafe;-fx-text-fill:#1e40af;-fx-background-radius:8;-fx-padding:9 14;-fx-font-size:12px;-fx-border-color:#bfdbfe;-fx-border-radius:8;"/>
+
+        <!-- Grille des rapports -->
+        <GridPane hgap="12" vgap="12">
+            <!-- Ligne 1 -->
+            <VBox styleClass="card" spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label text="Toutes les demandes" style="-fx-font-size:14px;-fx-font-weight:700;-fx-text-fill:#1a2a4a;"/>
+                <Label text="Liste complete avec statuts, clients et montants"
+                       style="-fx-font-size:12px;-fx-text-fill:#64748b;" wrapText="true"/>
+                <Button text="Generer Excel" styleClass="btn-primary" maxWidth="Infinity"
+                        onAction="#onExportDemandes"/>
+            </VBox>
+
+            <VBox styleClass="card" spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <Label text="En attente de paiement" style="-fx-font-size:14px;-fx-font-weight:700;-fx-text-fill:#1a2a4a;"/>
+                <Label text="Demandes en attente de validation comptable"
+                       style="-fx-font-size:12px;-fx-text-fill:#64748b;" wrapText="true"/>
+                <Button text="Generer Excel" styleClass="btn-primary" maxWidth="Infinity"
+                        onAction="#onExportAttentePaiement"/>
+            </VBox>
+
+            <VBox styleClass="card" spacing="8" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                <Label text="Tous les bons emis" style="-fx-font-size:14px;-fx-font-weight:700;-fx-text-fill:#1a2a4a;"/>
+                <Label text="Tous les bons generes avec codes uniques et statuts"
+                       style="-fx-font-size:12px;-fx-text-fill:#64748b;" wrapText="true"/>
+                <Button text="Generer Excel" styleClass="btn-primary" maxWidth="Infinity"
+                        onAction="#onExportBons"/>
+            </VBox>
+
+            <!-- Ligne 2 -->
+            <VBox styleClass="card" spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <Label text="Bons redimes" style="-fx-font-size:14px;-fx-font-weight:700;-fx-text-fill:#1a2a4a;"/>
+                <Label text="Redemptions par magasin, date et superviseur"
+                       style="-fx-font-size:12px;-fx-text-fill:#64748b;" wrapText="true"/>
+                <Button text="Generer Excel" styleClass="btn-primary" maxWidth="Infinity"
+                        onAction="#onExportRedimes"/>
+            </VBox>
+
+            <VBox styleClass="card" spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Label text="Bons expires" style="-fx-font-size:14px;-fx-font-weight:700;-fx-text-fill:#1a2a4a;"/>
+                <Label text="Bons dont la date de validite est depassee"
+                       style="-fx-font-size:12px;-fx-text-fill:#64748b;" wrapText="true"/>
+                <Button text="Generer Excel" styleClass="btn-primary" maxWidth="Infinity"
+                        onAction="#onExportExpires"/>
+            </VBox>
+
+            <VBox styleClass="card" spacing="8" GridPane.columnIndex="2" GridPane.rowIndex="1"
+                  style="-fx-border-color:#fde68a;-fx-border-width:2;">
+                <Label text="Proches expiration (30j)" style="-fx-font-size:14px;-fx-font-weight:700;-fx-text-fill:#92400e;"/>
+                <Label text="Bons expirant dans les 30 prochains jours - ALERTE"
+                       style="-fx-font-size:12px;-fx-text-fill:#92400e;" wrapText="true"/>
+                <Button text="Generer Excel" styleClass="btn-warning" maxWidth="Infinity"
+                        onAction="#onExportProcheExpiration"/>
+            </VBox>
+        </GridPane>
+
+        <!-- Statut -->
+        <Label fx:id="lblStatut" text="" maxWidth="Infinity"
+               style="-fx-font-size:12px;-fx-padding:8 14;-fx-background-radius:8;" wrapText="true"/>
+
+    </VBox>
+</HBox>

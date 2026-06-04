@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<HBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.vms.controller.ParametresController" minHeight="620">
+    <fx:include source="sidebar.fxml" fx:id="sidebar"/>
+    <VBox styleClass="main-content" HBox.hgrow="ALWAYS" spacing="14">
+
+        <VBox spacing="2">
+            <Label styleClass="page-title"    text="Parametres systeme"/>
+            <Label styleClass="page-subtitle" text="Configuration generale de l'application VMS"/>
+        </VBox>
+
+        <VBox styleClass="card" spacing="16" maxWidth="600">
+            <Label styleClass="card-title" text="Informations de l'organisation"/>
+
+            <VBox spacing="6">
+                <Label styleClass="field-label" text="Nom de l'organisation *"/>
+                <TextField fx:id="txtNomOrg" styleClass="field-input"
+                           promptText="Ex: VoucherManager MCCI"/>
+            </VBox>
+
+            <VBox spacing="6">
+                <Label styleClass="field-label" text="Email expediteur (pour les emails auto) *"/>
+                <TextField fx:id="txtEmailExp" styleClass="field-input"
+                           promptText="Ex: admin@vms.mu"/>
+                <Label text="Cet email doit correspondre a celui configure dans EmailService.java"
+                       style="-fx-font-size:11px;-fx-text-fill:#6b7280;"/>
+            </VBox>
+        </VBox>
+
+        <VBox styleClass="card" spacing="16" maxWidth="600">
+            <Label styleClass="card-title" text="Regles de gestion des bons"/>
+
+            <HBox spacing="20">
+                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                    <Label styleClass="field-label" text="Duree de validite par defaut (jours) *"/>
+                    <TextField fx:id="txtDureeValidite" styleClass="field-input"
+                               promptText="365"/>
+                    <Label text="Appliquee a la creation si aucune date saisie"
+                           style="-fx-font-size:11px;-fx-text-fill:#6b7280;"/>
+                </VBox>
+                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                    <Label styleClass="field-label" text="Delai alerte expiration (jours) *"/>
+                    <TextField fx:id="txtDelaiAlerte" styleClass="field-input"
+                               promptText="30"/>
+                    <Label text="Bons signales dans les rapports et le dashboard"
+                           style="-fx-font-size:11px;-fx-text-fill:#6b7280;"/>
+                </VBox>
+            </HBox>
+        </VBox>
+
+        <!-- Statut -->
+        <Label fx:id="lblStatut" text="" maxWidth="600" wrapText="true"
+               visible="false" managed="true"/>
+
+        <!-- Boutons -->
+        <HBox spacing="10">
+            <Button styleClass="btn-primary"  text="Enregistrer les parametres"
+                    onAction="#onEnregistrer"/>
+            <Button styleClass="btn-outline"  text="Reinitialiser"
+                    onAction="#onReinitialiser"/>
+        </HBox>
+
+    </VBox>
+</HBox>

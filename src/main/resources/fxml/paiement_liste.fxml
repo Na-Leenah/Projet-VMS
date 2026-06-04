@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<HBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.vms.controller.PaiementController" minHeight="620">
+    <fx:include source="sidebar.fxml" fx:id="sidebar"/>
+    <VBox styleClass="main-content" HBox.hgrow="ALWAYS" spacing="12">
+        <HBox alignment="CENTER_LEFT">
+            <VBox HBox.hgrow="ALWAYS" spacing="2">
+                <Label styleClass="page-title"    text="Validation des paiements"/>
+                <Label fx:id="lblTotal" styleClass="page-subtitle" text="Chargement..."/>
+            </VBox>
+        </HBox>
+        <Label text="💰  Validez ou rejetez les paiements reçus — tout l'historique reste visible"
+               maxWidth="Infinity"
+               style="-fx-background-color:#fef3c7;-fx-text-fill:#92400e;-fx-background-radius:8;-fx-padding:9 14;-fx-font-size:12px;-fx-border-color:#fde68a;-fx-border-radius:8;"/>
+        <VBox styleClass="card" VBox.vgrow="ALWAYS">
+            <TableView fx:id="tableView" VBox.vgrow="ALWAYS" styleClass="table-view">
+                <columns>
+                    <TableColumn fx:id="colReference" text="Référence" prefWidth="130"/>
+                    <TableColumn fx:id="colClient"    text="Client"    prefWidth="160"/>
+                    <TableColumn fx:id="colMontant"   text="Montant"   prefWidth="120"/>
+                    <TableColumn fx:id="colDate"      text="Date"      prefWidth="90"/>
+                    <TableColumn fx:id="colStatut"    text="Statut"    prefWidth="130"/>
+                    <TableColumn fx:id="colActions"   text="Actions"   prefWidth="110"/>
+                </columns>
+                <placeholder>
+                    <VBox alignment="CENTER" spacing="8">
+                        <Label text="✅" style="-fx-font-size:32px;"/>
+                        <Label text="Aucune demande" style="-fx-text-fill:#8a96a8;-fx-font-size:13px;"/>
+                    </VBox>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </VBox>
+</HBox>

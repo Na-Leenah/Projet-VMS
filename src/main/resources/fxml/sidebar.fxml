@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.vms.controller.SidebarController"
+      styleClass="sidebar">
+
+    <!-- Brand -->
+    <HBox styleClass="sidebar-brand" alignment="CENTER_LEFT" spacing="10">
+        <Label text="V" style="-fx-background-color:#1e3a72;-fx-background-radius:8;
+                               -fx-text-fill:#6ab0f5;-fx-font-weight:700;-fx-font-size:16px;
+                               -fx-min-width:34;-fx-min-height:34;-fx-alignment:CENTER;"/>
+        <VBox spacing="1">
+            <Label styleClass="sidebar-title"    text="VMS"/>
+            <Label styleClass="sidebar-subtitle" text="VOUCHER MANAGER"/>
+        </VBox>
+    </HBox>
+
+    <!-- Section Principal -->
+    <Label styleClass="sidebar-section" text="PRINCIPAL"/>
+
+    <Button styleClass="nav-item" maxWidth="Infinity"
+            text="🏠  Tableau de bord" alignment="CENTER_LEFT"
+            onAction="#onNavDashboard"/>
+
+    <Button styleClass="nav-item" maxWidth="Infinity"
+            text="📋  Demandes" alignment="CENTER_LEFT"
+            onAction="#onNavDemandes">
+        <graphic>
+            <Label fx:id="badgeDemandes" text="0"
+                   style="-fx-background-color:#1e3a72;-fx-text-fill:#6ab0f5;
+                          -fx-background-radius:8;-fx-padding:1 6;-fx-font-size:9px;"
+                   visible="false" managed="false"/>
+        </graphic>
+    </Button>
+
+    <!-- Bons émis -->
+    <VBox fx:id="menuBons">
+        <Button styleClass="nav-item" maxWidth="Infinity"
+                text="🎁  Bons émis" alignment="CENTER_LEFT"
+                onAction="#onNavBons"/>
+    </VBox>
+
+    <!-- Section Gestion -->
+    <Label styleClass="sidebar-section" text="GESTION"/>
+
+    <VBox fx:id="menuClients">
+        <Button styleClass="nav-item" maxWidth="Infinity"
+                text="👤  Clients" alignment="CENTER_LEFT"
+                onAction="#onNavClients"/>
+    </VBox>
+
+    <VBox fx:id="menuMagasins">
+        <Button styleClass="nav-item" maxWidth="Infinity"
+                text="🏪  Enseignes / Magasins" alignment="CENTER_LEFT"
+                onAction="#onNavMagasins"/>
+    </VBox>
+
+    <VBox fx:id="menuUtilisateurs">
+        <Button styleClass="nav-item" maxWidth="Infinity"
+                text="👥  Utilisateurs" alignment="CENTER_LEFT"
+                onAction="#onNavUtilisateurs"/>
+    </VBox>
+
+    <VBox fx:id="menuPaiements">
+        <Button styleClass="nav-item" maxWidth="Infinity"
+                text="💰  Paiements" alignment="CENTER_LEFT"
+                onAction="#onNavPaiements"/>
+    </VBox>
+
+    <VBox fx:id="menuApprobations">
+        <Button styleClass="nav-item" maxWidth="Infinity"
+                text="✅  Approbations" alignment="CENTER_LEFT"
+                onAction="#onNavApprobations"/>
+    </VBox>
+
+
+    <!-- Scan rédemption — superviseur magasin -->
+    <VBox fx:id="menuScan">
+        <Button styleClass="nav-item" maxWidth="Infinity"
+                text="📷  Scan rédemption" alignment="CENTER_LEFT"
+                onAction="#onNavScan"/>
+    </VBox>
+
+    <!-- Section Système -->
+    <Label styleClass="sidebar-section" text="SYSTÈME"/>
+
+    <VBox fx:id="menuRapports">
+        <Button styleClass="nav-item" maxWidth="Infinity"
+                text="📊  Rapports Excel" alignment="CENTER_LEFT"
+                onAction="#onNavRapports"/>
+    </VBox>
+
+    <VBox fx:id="menuAudit">
+        <Button styleClass="nav-item" maxWidth="Infinity"
+                text="📄  Audit Trail" alignment="CENTER_LEFT"
+                onAction="#onNavAudit"/>
+    </VBox>
+
+    <VBox fx:id="menuParametres">
+        <Button styleClass="nav-item" maxWidth="Infinity"
+                text="⚙️  Paramètres" alignment="CENTER_LEFT"
+                onAction="#onNavParametres"/>
+    </VBox>
+
+    <VBox VBox.vgrow="ALWAYS"/>
+
+    <!-- Utilisateur connecté + déconnexion -->
+    <VBox styleClass="sidebar-user-zone" spacing="8">
+        <HBox alignment="CENTER_LEFT" spacing="9">
+            <Label fx:id="lblUserInitiales" text="??"
+                   style="-fx-background-color:#1e3a72;-fx-text-fill:#6ab0f5;
+                          -fx-background-radius:50%;-fx-font-size:11px;-fx-font-weight:600;
+                          -fx-min-width:30;-fx-min-height:30;-fx-alignment:CENTER;"/>
+            <VBox spacing="1">
+                <Label fx:id="lblUserNom"  text="..." styleClass="ava-name"/>
+                <Label fx:id="lblUserRole" text="..." styleClass="ava-role"/>
+            </VBox>
+        </HBox>
+        <Button text="⎋  Déconnexion" maxWidth="Infinity" styleClass="nav-item"
+                style="-fx-text-fill:#ef4444;-fx-font-size:11px;"
+                onAction="#onDeconnexion"/>
+    </VBox>
+
+</VBox>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<HBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.vms.controller.UtilisateursController" minHeight="620">
+    <fx:include source="sidebar.fxml" fx:id="sidebar"/>
+    <VBox styleClass="main-content" HBox.hgrow="ALWAYS" spacing="12">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <VBox HBox.hgrow="ALWAYS" spacing="2">
+                <Label styleClass="page-title"    text="Gestion des utilisateurs"/>
+                <Label fx:id="lblTotal" styleClass="page-subtitle" text="Chargement..."/>
+            </VBox>
+            <TextField fx:id="txtRecherche" styleClass="field-input"
+                       promptText="Rechercher nom, email..." prefWidth="240"/>
+            <Button styleClass="btn-primary" text="+ Nouvel utilisateur"
+                    onAction="#onNouvelUtilisateur"/>
+        </HBox>
+        <VBox styleClass="card" VBox.vgrow="ALWAYS">
+            <TableView fx:id="tableView" VBox.vgrow="ALWAYS" styleClass="table-view">
+                <columns>
+                    <TableColumn fx:id="colNom"     text="Nom complet"  prefWidth="180"/>
+                    <TableColumn fx:id="colEmail"   text="Email"        prefWidth="200"/>
+                    <TableColumn fx:id="colRole"    text="Role"         prefWidth="140"/>
+                    <TableColumn fx:id="colSite"    text="Site"         prefWidth="160"/>
+                    <TableColumn fx:id="colStatut"  text="Statut"       prefWidth="90"/>
+                    <TableColumn fx:id="colActions" text="Actions"      prefWidth="90"/>
+                </columns>
+                <placeholder>
+                    <Label text="Aucun utilisateur trouve"
+                           style="-fx-text-fill:#8a96a8;-fx-font-size:13px;"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </VBox>
+</HBox>

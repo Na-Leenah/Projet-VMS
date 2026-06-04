@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<!-- Fond bleu foncé plein écran -->
+<StackPane xmlns="http://javafx.com/javafx/17"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.vms.controller.LoginController"
+           styleClass="login-bg">
+
+    <!-- Carte flottante centrée -->
+    <HBox styleClass="login-card">
+
+        <!-- ── GAUCHE : bleu avec logo + textes ── -->
+        <VBox styleClass="login-card-left" alignment="CENTER" spacing="0">
+
+            <!-- Logo icône -->
+            <StackPane styleClass="login-logo-box" alignment="CENTER">
+                <Label text="📋" style="-fx-font-size:32px;"/>
+            </StackPane>
+
+            <VBox.margin><Insets top="0" bottom="20"/></VBox.margin>
+
+            <!-- Titre VMS -->
+            <VBox alignment="CENTER" spacing="6" style="-fx-padding:20 0 0 0;">
+                <Label styleClass="login-card-titre" text="V M S"/>
+                <Label styleClass="login-card-sous"  text="VOUCHER MANAGER"/>
+            </VBox>
+
+            <!-- Séparateur -->
+            <Region styleClass="login-sep"/>
+
+            <!-- Description -->
+            <Label styleClass="login-card-desc"
+                   text="Gestion centralisée&#10;des bons cadeaux&#10;multi-enseignes"
+                   wrapText="true" textAlignment="CENTER"/>
+
+            <!-- Spacer -->
+            <VBox VBox.vgrow="ALWAYS"/>
+
+            <!-- Mention bas gauche -->
+            <Label styleClass="login-card-footer"
+                   text="MCCI Business School&#10;Session 2026"
+                   textAlignment="CENTER" wrapText="true"/>
+
+        </VBox>
+
+        <!-- ── DROITE : blanc avec formulaire ── -->
+        <VBox styleClass="login-card-right" alignment="CENTER" spacing="0">
+
+            <VBox spacing="20" maxWidth="320" minWidth="300">
+
+                <!-- Email -->
+                <VBox spacing="6">
+                    <Label styleClass="lf-label" text="Adresse Email"/>
+                    <TextField fx:id="champEmail"
+                               styleClass="lf-input"
+                               promptText=""
+                               onKeyPressed="#onToucheEntre"/>
+                </VBox>
+
+                <!-- Mot de passe -->
+                <VBox spacing="6">
+                    <Label styleClass="lf-label" text="Mot de passe"/>
+                    <StackPane>
+                        <PasswordField fx:id="champMotDePasse"
+                                      styleClass="lf-input"
+                                      promptText="••••••••"
+                                      onKeyPressed="#onToucheEntre"/>
+                        <TextField fx:id="champMotDePasseVisible"
+                                   styleClass="lf-input"
+                                   promptText="••••••••"
+                                   onKeyPressed="#onToucheEntre"/>
+                    </StackPane>
+                    <CheckBox fx:id="cbAfficherMDP"
+                              text="Afficher le mot de passe"
+                              styleClass="lf-checkbox"
+                              onAction="#onAfficherMDP"/>
+                </VBox>
+
+                <!-- Erreur -->
+                <Label fx:id="lblErreur"
+                       styleClass="lf-erreur"
+                       text="" visible="false" wrapText="true"/>
+
+                <!-- Bouton -->
+                <Button fx:id="btnConnexion"
+                        text="Se connecter"
+                        styleClass="lf-btn"
+                        maxWidth="Infinity"
+                        defaultButton="true"
+                        onAction="#onConnexion"/>
+
+            </VBox>
+
+            <!-- Pied de carte droite -->
+            <VBox alignment="CENTER" spacing="4" style="-fx-padding:28 0 0 0;">
+                <Label fx:id="lblStatutBD"
+                       text="● Vérification..."
+                       styleClass="lf-statut"/>
+                <Label text="MCCI Business School – Session 2026"
+                       styleClass="lf-mention"/>
+            </VBox>
+
+        </VBox>
+
+    </HBox>
+
+</StackPane>

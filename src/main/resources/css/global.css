@@ -1,0 +1,233 @@
+/* ============================================================
+   VMS – global.css
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════
+   LOGIN
+   ══════════════════════════════════════════════════════════ */
+
+.login-bg {
+    -fx-background-color: linear-gradient(to bottom right, #0a1628, #112045, #0d1b35);
+    -fx-min-width:  100%;
+    -fx-min-height: 100%;
+}
+
+/* Carte plus grande pour mieux remplir l'écran */
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 18px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.50), 48, 0, 0, 16);
+    -fx-min-width:  860px;
+    -fx-max-width:  860px;
+    -fx-min-height: 520px;
+    -fx-max-height: 520px;
+}
+
+/* ── Partie gauche bleue foncée ── */
+.login-card-left {
+    -fx-background-color: linear-gradient(to bottom, #1b347a, #1d3a85);
+    -fx-background-radius: 18px 0 0 18px;
+    -fx-padding: 52 36 44 36;
+    -fx-min-width:  360px;
+    -fx-pref-width: 360px;
+    -fx-max-width:  360px;
+    -fx-min-height: 520px;
+    -fx-spacing: 0;
+}
+
+.login-logo-box {
+    -fx-background-color: rgba(255,255,255,0.15);
+    -fx-background-radius: 14px;
+    -fx-min-width:  64px;
+    -fx-min-height: 64px;
+    -fx-max-width:  64px;
+    -fx-max-height: 64px;
+}
+
+.login-card-titre {
+    -fx-font-size: 38px;
+    -fx-font-weight: 700;
+    -fx-text-fill: white;
+    -fx-letter-spacing: 4px;
+}
+
+.login-card-sous {
+    -fx-font-size: 10px;
+    -fx-font-weight: 600;
+    -fx-text-fill: rgba(255,255,255,0.6);
+    -fx-letter-spacing: 3px;
+}
+
+.login-sep {
+    -fx-background-color: rgba(255,255,255,0.25);
+    -fx-min-height: 1px;
+    -fx-max-height: 1px;
+    -fx-min-width:  48px;
+    -fx-max-width:  48px;
+    -fx-pref-width: 48px;
+}
+
+.login-card-desc {
+    -fx-font-size: 14px;
+    -fx-text-fill: rgba(255,255,255,0.75);
+    -fx-text-alignment: CENTER;
+    -fx-line-spacing: 5px;
+}
+
+.login-card-footer {
+    -fx-font-size: 11px;
+    -fx-text-fill: rgba(255,255,255,0.28);
+    -fx-text-alignment: CENTER;
+}
+
+/* ── Partie droite blanche ── */
+.login-card-right {
+    -fx-background-color: white;
+    -fx-background-radius: 0 18px 18px 0;
+    -fx-padding: 52 52 40 52;
+    -fx-min-width:  500px;
+    -fx-pref-width: 500px;
+    -fx-max-width:  500px;
+    -fx-min-height: 520px;
+    -fx-alignment: CENTER;
+}
+
+.lf-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #374151;
+}
+
+.lf-input {
+    -fx-font-size: 13px;
+    -fx-padding: 11 14 11 14;
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #1a2a4a;
+    -fx-pref-height: 44px;
+}
+
+.lf-input:focused {
+    -fx-border-color: #2a52b8;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(42,82,184,0.18), 6, 0, 0, 0);
+}
+
+.lf-checkbox {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6b7280;
+    -fx-cursor: hand;
+    -fx-padding: 4 0 0 0;
+}
+
+.lf-erreur {
+    -fx-font-size: 12px;
+    -fx-text-fill: #dc2626;
+    -fx-background-color: #fef2f2;
+    -fx-border-color: #fecaca;
+    -fx-border-radius: 7px;
+    -fx-background-radius: 7px;
+    -fx-padding: 9 13 9 13;
+}
+
+.lf-btn {
+    -fx-font-size: 15px;
+    -fx-font-weight: 600;
+    -fx-text-fill: white;
+    -fx-background-color: #1e3a8a;
+    -fx-background-radius: 9px;
+    -fx-padding: 13 20 13 20;
+    -fx-cursor: hand;
+    -fx-pref-height: 48px;
+}
+
+.lf-btn:hover    { -fx-background-color: #2a52b8; }
+.lf-btn:pressed  { -fx-background-color: #162d6e; }
+.lf-btn:disabled { -fx-background-color: #93c5fd; -fx-cursor: default; }
+
+.lf-statut  { -fx-font-size: 11px; -fx-text-fill: #6b7280; }
+.lf-mention { -fx-font-size: 11px; -fx-text-fill: #9ca3af; }
+
+/* ══════════════════════════════════════════════════════════
+   DASHBOARD
+   ══════════════════════════════════════════════════════════ */
+
+.sidebar {
+    -fx-background-color: #0d1b35;
+    -fx-min-width: 210px; -fx-pref-width: 210px; -fx-max-width: 210px;
+}
+.sidebar-brand {
+    -fx-padding: 16 16 14 16;
+    -fx-border-color: transparent transparent #1a2e50 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.sidebar-title    { -fx-font-size: 14px; -fx-font-weight: 700; -fx-text-fill: white; }
+.sidebar-subtitle { -fx-font-size: 9px;  -fx-text-fill: #4a7fc1; }
+.sidebar-section  { -fx-font-size: 9px; -fx-text-fill: #3a5a80;
+                    -fx-font-weight: 700; -fx-padding: 12 16 4 16; }
+
+.nav-item {
+    -fx-background-color: transparent; -fx-text-fill: #7a9cc4;
+    -fx-font-size: 12px; -fx-padding: 8 16; -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT; -fx-border-color: transparent;
+    -fx-border-width: 0 0 0 2; -fx-background-radius: 0;
+    -fx-min-width: 210px; -fx-max-width: 210px;
+}
+.nav-item:hover  { -fx-background-color: #152544; -fx-text-fill: #a0c0e8; }
+.nav-item-active { -fx-background-color: #152544; -fx-text-fill: white;
+                   -fx-border-color: #3b82f6; -fx-font-weight: 600; }
+
+.sidebar-user-zone {
+    -fx-border-color: #1a2e50 transparent transparent transparent;
+    -fx-border-width: 1 0 0 0; -fx-padding: 12 16 12 16;
+}
+.ava-name { -fx-text-fill: #c0d4ec; -fx-font-size: 11px; -fx-font-weight: 500; }
+.ava-role { -fx-text-fill: #4a7fc1; -fx-font-size: 10px; }
+
+.main-content  { -fx-background-color: #f0f3f9; -fx-padding: 20; }
+.page-title    { -fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #1a2a4a; }
+.page-subtitle { -fx-font-size: 12px; -fx-text-fill: #8a96a8; }
+
+.card {
+    -fx-background-color: white; -fx-background-radius: 10px;
+    -fx-border-color: #e8ecf3; -fx-border-radius: 10px; -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 6, 0, 0, 2);
+}
+.card-title { -fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #1a2a4a; }
+
+.badge        { -fx-background-radius: 10px; -fx-padding: 3 10; -fx-font-size: 10px; -fx-font-weight: 600; }
+.badge-bleu   { -fx-background-color: #dbeafe; -fx-text-fill: #1e40af; }
+.badge-vert   { -fx-background-color: #d1fae5; -fx-text-fill: #065f46; }
+.badge-orange { -fx-background-color: #fef3c7; -fx-text-fill: #92400e; }
+.badge-rouge  { -fx-background-color: #fee2e2; -fx-text-fill: #991b1b; }
+.badge-gris   { -fx-background-color: #f1f5f9; -fx-text-fill: #64748b; }
+.badge-violet { -fx-background-color: #f3e8ff; -fx-text-fill: #6b21a8; }
+
+.btn-primary { -fx-background-color: #1e40af; -fx-text-fill: white; -fx-font-size: 12px;
+               -fx-font-weight: 600; -fx-background-radius: 7px; -fx-padding: 8 16; -fx-cursor: hand; }
+.btn-primary:hover { -fx-background-color: #1d4ed8; }
+.btn-success { -fx-background-color: #059669; -fx-text-fill: white; -fx-font-size: 12px;
+               -fx-font-weight: 600; -fx-background-radius: 7px; -fx-padding: 8 16; -fx-cursor: hand; }
+.btn-success:hover { -fx-background-color: #047857; }
+.btn-warning { -fx-background-color: #d97706; -fx-text-fill: white; -fx-font-size: 12px;
+               -fx-font-weight: 600; -fx-background-radius: 7px; -fx-padding: 8 16; -fx-cursor: hand; }
+.btn-danger  { -fx-background-color: #dc2626; -fx-text-fill: white; -fx-font-size: 12px;
+               -fx-font-weight: 600; -fx-background-radius: 7px; -fx-padding: 8 16; -fx-cursor: hand; }
+.btn-outline { -fx-background-color: transparent; -fx-text-fill: #64748b; -fx-font-size: 12px;
+               -fx-background-radius: 7px; -fx-border-color: #d1d5db; -fx-border-radius: 7px;
+               -fx-padding: 8 16; -fx-cursor: hand; }
+.btn-outline:hover { -fx-background-color: #f8fafc; }
+
+.field-label { -fx-font-size: 12px; -fx-font-weight: 600; -fx-text-fill: #374151; }
+.field-input { -fx-font-size: 12px; -fx-padding: 8 12; -fx-background-color: #f9fafb;
+               -fx-border-color: #d1d5db; -fx-border-radius: 7px; -fx-background-radius: 7px;
+               -fx-text-fill: #1a2a4a; }
+.field-input:focused { -fx-border-color: #3b82f6; -fx-background-color: white; }
+
+.table-view { -fx-background-color: transparent; -fx-border-color: #e2e8f0; -fx-border-radius: 8px; }
+.table-view .column-header { -fx-background-color: #f8fafc; -fx-font-size: 11px; -fx-font-weight: 700; }
+.table-view .table-row-cell { -fx-font-size: 12px; -fx-text-fill: #1a2a4a; }
+.table-view .table-row-cell:hover    { -fx-background-color: #f0f7ff; }
+.table-view .table-row-cell:selected { -fx-background-color: #dbeafe; }

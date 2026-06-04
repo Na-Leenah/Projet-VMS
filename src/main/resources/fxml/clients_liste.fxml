@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<HBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.vms.controller.ClientsListeController"
+      minHeight="620">
+
+    <fx:include source="sidebar.fxml" fx:id="sidebar"/>
+
+    <VBox styleClass="main-content" HBox.hgrow="ALWAYS" spacing="12">
+
+        <!-- Topbar -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <VBox HBox.hgrow="ALWAYS" spacing="2">
+                <Label styleClass="page-title"    text="Gestion des clients"/>
+                <Label fx:id="lblTotalClients" styleClass="page-subtitle" text="Chargement..."/>
+            </VBox>
+            <TextField fx:id="txtRecherche" styleClass="field-input"
+                       promptText="🔍  Rechercher nom, société, email..."
+                       prefWidth="260"/>
+            <HBox fx:id="btnNouveauClientZone" alignment="CENTER_RIGHT">
+                <Button styleClass="btn-primary" text="+ Nouveau client"
+                        onAction="#onNouveauClient"/>
+            </HBox>
+        </HBox>
+
+        <!-- Bandeau lecture seule pour comptable -->
+        <Label text="👁  Vue en lecture seule — vous ne pouvez pas modifier les clients"
+               style="-fx-background-color:#f1f5f9;-fx-text-fill:#64748b;
+                      -fx-background-radius:8;-fx-padding:8 14;-fx-font-size:12px;"
+               managed="false" visible="false" fx:id="lblLectureSeule"/>
+
+        <!-- Tableau -->
+        <VBox styleClass="card" VBox.vgrow="ALWAYS">
+            <TableView fx:id="tableView" VBox.vgrow="ALWAYS" styleClass="table-view">
+                <columns>
+                    <TableColumn fx:id="colSociete"   text="Société / Entreprise" prefWidth="190"/>
+                    <TableColumn fx:id="colContact"   text="Contact"              prefWidth="150"/>
+                    <TableColumn fx:id="colEmail"     text="Email"                prefWidth="200"/>
+                    <TableColumn fx:id="colTelephone" text="Téléphone"            prefWidth="120"/>
+                    <TableColumn fx:id="colVille"     text="Ville"                prefWidth="110"/>
+                    <TableColumn fx:id="colActions"   text="Actions"              prefWidth="100"/>
+                </columns>
+                <placeholder>
+                    <Label text="Aucun client trouvé"
+                           style="-fx-text-fill:#8a96a8;-fx-font-size:13px;"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+
+    </VBox>
+
+</HBox>
