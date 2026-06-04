@@ -14,9 +14,9 @@ public class GenererHash {
         // Tu peux changer les mots de passe ici librement
         String[][] comptes = {
             // { email,                      motDePasse          }
-            { "alice.admin@vms.mu",      "AliceAdmin@2026"   },
-            { "bruno.compta@vms.mu",     "BrunoCompta@2026"  },
-            { "claire.appro@vms.mu",     "ClaireAppro@2026"  },
+            { "nazrababdallah+admin@vms.mu",      "AliceAdmin@2026"   },
+            { "nazrababdallah+comptable@vms.mu",     "BrunoCompta@2026"  },
+            { "nazrababdallah+approbateur@vms.mu",     "ClaireAppro@2026"  },
             { "david.sup@vms.mu",        "DavidSup@2026"     },
         };
 
@@ -63,9 +63,9 @@ public class GenererHash {
         System.out.println("╚══════════════════════════════════════════════════════════╝");
         System.out.printf("%-35s %-25s %-20s%n", "Email", "Mot de passe", "Rôle");
         System.out.println("─────────────────────────────────────────────────────────────────────────────");
-        System.out.printf("%-35s %-25s %-20s%n", "alice.admin@vms.mu",  "AliceAdmin@2026",  "ADMIN");
-        System.out.printf("%-35s %-25s %-20s%n", "bruno.compta@vms.mu", "BrunoCompta@2026", "COMPTABLE");
-        System.out.printf("%-35s %-25s %-20s%n", "claire.appro@vms.mu", "ClaireAppro@2026", "APPROBATEUR");
+        System.out.printf("%-35s %-25s %-20s%n", "nazrababdallah+admin@vms.mu,  "AliceAdmin@2026",  "ADMIN");
+        System.out.printf("%-35s %-25s %-20s%n", "nazrababdallah+comptable@vms.mu", "BrunoCompta@2026", "COMPTABLE");
+        System.out.printf("%-35s %-25s %-20s%n", "nazrababdallah+approbateur@vms.mu", "ClaireAppro@2026", "APPROBATEUR");
         System.out.printf("%-35s %-25s %-20s%n", "david.sup@vms.mu",    "DavidSup@2026",    "SUPERVISEUR_MAGASIN");
         System.out.println();
         System.out.println("⚠️  Conserve ce tableau précieusement – les hash ne sont pas réversibles !");
